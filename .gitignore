@@ -1,0 +1,17 @@
+# DocToolchain runtime
+.doctoolchain/
+build/
+.gradle/
+.tmp/
+.cache/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
