@@ -1,6 +1,6 @@
 = Project Documentation
-:author: Your Name
-:email: your.email@example.com
+:author: Nicola Ochsenbein
+:email: nicola.ochsenbein@noser.com
 :revnumber: 1.0
 :revdate: {docdate}
 :toc: left

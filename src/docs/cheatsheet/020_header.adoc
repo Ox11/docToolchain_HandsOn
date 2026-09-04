@@ -1,0 +1,12 @@
+== Document Header
+
+[source,asciidoc]
+----
+= Document Title
+:author: Jane Doe
+:revnumber: 1.0
+:toc: left
+:icons: font
+----
+
+Attributes are set with `:name: value` and used inline as `{name}`.

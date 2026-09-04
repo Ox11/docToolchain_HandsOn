@@ -1,0 +1,25 @@
+== Admonitions
+
+[source,asciidoc]
+----
+NOTE: Useful information.
+TIP: A helpful hint.
+IMPORTANT: Do not skip this.
+WARNING: Be careful.
+CAUTION: Risk ahead.
+----
+
+NOTE: Renders as a styled callout box.
+
+== Tables
+
+[source,asciidoc]
+----
+[cols="1,2",options="header"]
+|===
+| Column A | Column B
+
+| Cell 1   | Cell 2
+| Cell 3   | Cell 4
+|===
+----

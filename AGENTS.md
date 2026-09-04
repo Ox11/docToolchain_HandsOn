@@ -7,25 +7,7 @@ This project uses **docToolchain via Docker**.
 - Do **not** install Java or docToolchain locally (e.g. via `./dtcw local install java` or `./dtcw local install doctoolchain`).
 - Use the Docker environment: `./dtcw docker <task>`.
 
-### Docker Permission Issues
-
-If you see:
-
-```
-docker: permission denied while trying to connect to the Docker daemon socket
-```
-
-the user needs to either:
-
-1. Add their user to the `docker` group (requires log out / log in to take effect):
-
-   ```bash
-   sudo usermod -aG docker $USER
-   ```
-
-2. Or run with `sudo`.
-
-Do not fall back to a local docToolchain/Java install without explicit user approval.
+Do not generate the doc. but remind the user to do so.
 
 ## Common Tasks
 

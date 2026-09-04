@@ -1,0 +1,13 @@
+== Links & Images
+
+[source,asciidoc]
+----
+https://example.com[Link text]
+link:page.html[Internal]
+mailto:me@example.com[Mail me]
+
+image::diagram.png[Alt text, 400]     // block image
+image:icon.png[Icon, 16]              // inline image
+
+<<section-id,See this section>>       // cross reference
+----

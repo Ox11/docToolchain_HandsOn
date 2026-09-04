@@ -1,0 +1,23 @@
+== Text Formatting
+
+[cols="2,1",options="header"]
+|===
+| Syntax | Result
+
+| `+*bold*+`              | *bold*
+| `+_italic_+`            | _italic_
+| `+`monospace`+`         | `monospace`
+| `+#highlight#+`         | #highlight#
+| `+~sub~+` / `+^sup^+`   | ~sub~ / ^sup^
+| `+[.underline]#text#+`  | [.underline]#text#
+|===
+
+== Headings
+
+[source,asciidoc]
+----
+= Level 0 (title)
+== Level 1
+=== Level 2
+==== Level 3
+----

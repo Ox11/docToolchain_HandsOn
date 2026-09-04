@@ -1,0 +1,33 @@
+== docToolchain in 60 Seconds
+
+docToolchain is a *docs-as-code* pipeline: plain AsciiDoc in `src/docs/` is built
+by *Gradle* into HTML, PDF, DocBook, slides or Confluence pages.
+
+[cols="1,2",options="header"]
+|===
+| Part | Role
+
+| `src/docs/*.adoc` | Your sources
+| `docToolchainConfig.groovy` | What to build and how
+| `dtcw` | Wrapper that runs Gradle (locally or in Docker)
+| `build/` | Generated output
+|===
+
+Register every document you want built:
+
+[source,groovy]
+----
+inputFiles = [
+    [file: 'cheatsheet.adoc', formats: ['html','pdf']],
+]
+----
+
+Then run a task:
+
+[source,bash]
+----
+./dtcw docker generateHTML     # build/html5/
+./dtcw docker generatePDF      # build/pdf/
+./dtcw docker generateDocbook  # build/docbook/
+./dtcw docker tasks            # list everything
+----

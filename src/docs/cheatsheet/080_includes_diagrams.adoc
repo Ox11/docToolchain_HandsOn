@@ -1,0 +1,23 @@
+== Includes & Conditionals
+
+[source,asciidoc]
+----
+include::chapters/intro.adoc[]
+include::code/Sample.java[lines=10..20]
+
+ifdef::backend-html5[]
+Only in HTML.
+endif::[]
+----
+
+== Diagrams (PlantUML)
+
+[source,asciidoc]
+----
+[plantuml,my-diagram,svg]
+\----
+@startuml
+Alice -> Bob: Hello
+@enduml
+\----
+----

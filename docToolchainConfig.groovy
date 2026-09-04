@@ -25,6 +25,7 @@ inputPath = 'src/docs';
 inputFiles = [
         [file: 'index.adoc', formats: ['html','pdf']],
         [file: 'doctoolchain-overview.adoc', formats: ['docbook']],
+        [file: 'cheatsheet.adoc', formats: ['html','pdf']],
         /** inputFiles **/
 ]
 

@@ -1,0 +1,14 @@
+== Quick Reference
+
+[cols="1,2",options="header"]
+|===
+| Goal | Snippet
+
+| Line break      | `+ ` at line end
+| Horizontal rule | `'''`
+| Page break      | `<<<`
+| Comment         | `// comment`
+| Block comment   | `////` ... `////`
+| Table of contents | `:toc: left`
+| No section numbers | `:sectnums!:`
+|===

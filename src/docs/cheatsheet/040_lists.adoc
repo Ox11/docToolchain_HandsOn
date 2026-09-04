@@ -1,0 +1,17 @@
+== Lists
+
+[source,asciidoc]
+----
+* bullet
+** nested bullet
+- also a bullet
+
+. numbered
+.. nested number
+
+Term:: Definition
+Other:: Another definition
+
+* [ ] open task
+* [x] done task
+----
