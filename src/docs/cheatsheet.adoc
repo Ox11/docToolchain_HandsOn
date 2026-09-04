@@ -24,3 +24,5 @@ include::cheatsheet/070_admonitions_tables.adoc[]
 include::cheatsheet/080_includes_diagrams.adoc[]
 
 include::cheatsheet/090_quick_reference.adoc[]
+
+include::cheatsheet/100_diagrams_side_by_side.adoc[]

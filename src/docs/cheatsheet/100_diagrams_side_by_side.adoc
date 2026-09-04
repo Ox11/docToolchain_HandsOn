@@ -1,0 +1,135 @@
+<<<
+
+== Diagrams: Source vs. Rendered
+
+Left column = what you write. Right column = what docToolchain renders.
+
+[cols="1a,1a",options="header",frame=all,grid=all]
+|===
+| Source | Rendered
+
+|
+.PlantUML
+-----
+[plantuml,hello-seq,svg]
+----
+@startuml
+Alice -> Bob: Hello
+Bob --> Alice: Hi!
+@enduml
+----
+-----
+
+|
+[plantuml,hello-seq,svg]
+----
+@startuml
+Alice -> Bob: Hello
+Bob --> Alice: Hi!
+@enduml
+----
+
+|
+.PlantUML (component)
+-----
+[plantuml,comp,svg]
+----
+@startuml
+[Docs] --> [Gradle]
+[Gradle] --> [PDF]
+@enduml
+----
+-----
+
+|
+[plantuml,comp,svg]
+----
+@startuml
+[Docs] --> [Gradle]
+[Gradle] --> [PDF]
+@enduml
+----
+
+|
+.Mermaid
+-----
+[mermaid,flow,svg]
+----
+graph LR
+  A[Write] --> B[Build]
+  B --> C[Publish]
+----
+-----
+
+|
+[mermaid,flow,svg]
+----
+graph LR
+  A[Write] --> B[Build]
+  B --> C[Publish]
+----
+
+|
+.Image (Tux)
+-----
+image::tux.png[Tux,120]
+-----
+
+|
+image::tux.png[Tux,120]
+
+|===
+
+NOTE: PlantUML works out of the box in the docToolchain Docker image.
+Mermaid needs either the `mmdc` CLI or Kroki — see below.
+
+=== Enabling Mermaid
+
+Either install the Mermaid CLI, or let Kroki render remotely by adding to the
+document header:
+
+[source,asciidoc]
+----
+:kroki-server-url: https://kroki.io
+:kroki-fetch-diagram:
+----
+
+and using `[mermaid]` blocks as shown above.
+
+=== Where Images Live
+
+Put `tux.png` into `src/docs/images/` and register the folder in
+`docToolchainConfig.groovy`:
+
+[source,groovy]
+----
+imageDirs = [
+    'images',
+]
+----
+
+docToolchain copies these to `build/.../images`, so `image::tux.png[]`
+resolves in HTML and PDF alike.
+
+=== Best Way to Include Self-Drawn Graphs
+
+[cols="1,2",options="header"]
+|===
+| Approach | When to use
+
+| *PlantUML / Mermaid* (text)
+| Default choice. Diffable in Git, no binary blobs, regenerated on every build.
+
+| *Excalidraw / draw.io → SVG*
+| Hand-drawn or free-form sketches. Export as *SVG* into `src/docs/images/`.
+  draw.io `.drawio.svg` and Excalidraw `.excalidraw.svg` stay re-editable.
+
+| *SVG over PNG*
+| SVG scales cleanly in PDF and HTML and stays readable when zoomed.
+
+| *PNG*
+| Only for screenshots or when SVG is not available.
+|===
+
+TIP: Keep the editable source next to the export, e.g.
+`images/arch.drawio.svg` — it renders as an image *and* reopens in draw.io.

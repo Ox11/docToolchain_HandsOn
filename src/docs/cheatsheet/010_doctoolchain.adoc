@@ -29,5 +29,81 @@ Then run a task:
 ./dtcw docker generateHTML     # build/html5/
 ./dtcw docker generatePDF      # build/pdf/
 ./dtcw docker generateDocbook  # build/docbook/
+./dtcw docker generateDeck     # build/deck/   (reveal.js slides)
 ./dtcw docker tasks            # list everything
 ----
+
+=== Export a Slide as PowerPoint
+
+docToolchain has no native `.pptx` writer — go through DocBook and Pandoc.
+
+Register the slide document for DocBook output:
+
+[source,groovy]
+----
+inputFiles = [
+    [file: 'doctoolchain-overview.adoc', formats: ['docbook']],
+]
+----
+
+Then build and convert:
+
+[source,bash]
+----
+./dtcw docker generateDocbook
+
+pandoc -f docbook -t pptx \
+  build/docbook/doctoolchain-overview.xml \
+  -o doctoolchain-overview.pptx \
+  --slide-level=2
+----
+
+TIP: `--slide-level=2` makes every `==` section its own slide.
+Keep one `==` section per slide and use only bullets for a clean result.
+
+==== Keeping It to a Single Slide
+
+Pandoc starts a new slide at every `==` heading, and *overflowing text is not
+scaled down* — it simply runs off the slide. So:
+
+* exactly *one* `==` section in the document
+* no `===` subsections
+* one bullet level where possible, max. ~8 bullets
+* no wide tables or source blocks
+
+==== Applying a Corporate Template
+
+Pandoc styles slides from a *reference document*. Generate one, restyle it once
+in PowerPoint, and reuse it:
+
+[source,bash]
+----
+scripts/init-pptx-template.sh   # writes src/docs/pptx/noser-reference.pptx
+# open it, edit the Slide Master, save
+scripts/make-pptx.sh            # generateDocbook + pandoc --reference-doc
+----
+
+The template is applied via:
+
+[source,bash]
+----
+pandoc -f docbook -t pptx build/docbook/doctoolchain-overview.xml \
+  -o doctoolchain-overview.pptx \
+  --slide-level=2 \
+  --reference-doc=src/docs/pptx/noser-reference.pptx
+----
+
+.Noser colours (from noser.com)
+[cols="1,1,2",options="header"]
+|===
+| Element | Colour | Usage
+
+| Orange     | `#FA9400` | Headings, bullet accents
+| Dark grey  | `#404545` | Body text
+| Beige      | `#F6F2ED` | Slide background
+| Light blue | `#B4E3EF` | Secondary accent
+| Font       | Trade Gothic LT Std | Fallback: Arial Narrow
+|===
+
+NOTE: Pandoc only picks up *theme, fonts, colours and layouts* from the
+reference file. Content is always taken from your AsciiDoc source.

@@ -3,22 +3,14 @@
 :revnumber: 1.0
 :revdate: {docdate}
 :toc!:
+:sectnums!:
 
-== What You Can Do With docToolchain
+== docToolchain & AsciiDoc at a Glance
 
-* *Generate formats* from one AsciiDoc source:
-** HTML — `./dtcw docker generateHTML`
-** PDF — `./dtcw docker generatePDF`
-** DocBook — `./dtcw docker generateDocbook`
-** Slides (reveal.js) — `./dtcw docker generateDeck`
-
-* *Publish & integrate* documentation:
-** Confluence publishing
-** Microsites with `generateSite`
-** HTML sanity checks
-
-* *Embed external content*:
-** OpenAPI specs, Jira tickets, EA diagrams
-** Changelogs from Git history
-
-Write once — publish everywhere from Git.
+* *Docs-as-code*: AsciiDoc in `src/docs/` → Gradle → `build/`
+* *Build*: `./dtcw docker generateHTML | generatePDF | generateDocbook | generateDeck`
+* *Config*: `docToolchainConfig.groovy` → `inputFiles`, `imageDirs`
+* *Syntax*: `== Section`, `*bold*`, `_italic_`, lists `*` `.`, tables `|===`
+* *Blocks*: `NOTE:` `TIP:` `WARNING:`, `include::part.adoc[]`, `image::tux.png[]`
+* *Diagrams*: PlantUML built in, Mermaid via Kroki, self-drawn as SVG
+* *Publish*: Confluence, microsite, Jira, OpenAPI, Git changelog

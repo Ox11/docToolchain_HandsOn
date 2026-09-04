@@ -38,6 +38,7 @@ inputFiles = [
 // ifndef::imagesdir[:imagesdir: ./whatsoever]
 // as doctoolchain defines :imagesdir: during generation
 imageDirs = [
+    'images',
     /** imageDirs **/
 ]
 
