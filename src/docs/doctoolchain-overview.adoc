@@ -1,0 +1,24 @@
+= docToolchain Overview
+:author: Nicola
+:revnumber: 1.0
+:revdate: {docdate}
+:toc!:
+
+== What You Can Do With docToolchain
+
+* *Generate formats* from one AsciiDoc source:
+** HTML — `./dtcw docker generateHTML`
+** PDF — `./dtcw docker generatePDF`
+** DocBook — `./dtcw docker generateDocbook`
+** Slides (reveal.js) — `./dtcw docker generateDeck`
+
+* *Publish & integrate* documentation:
+** Confluence publishing
+** Microsites with `generateSite`
+** HTML sanity checks
+
+* *Embed external content*:
+** OpenAPI specs, Jira tickets, EA diagrams
+** Changelogs from Git history
+
+Write once — publish everywhere from Git.
